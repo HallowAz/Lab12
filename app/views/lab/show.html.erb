@@ -1,0 +1,31 @@
+
+<%if @res == 0%>
+  <h2>Ошибка! Пусте поле</h2>
+<%else%>
+    <h1>Результат:</h1>
+
+    <div class="tabled">
+        <div class="cap">
+            <div class="thead">
+                <div class="rowt">
+                    <div class="col1">Номер</div>
+                    <div class="col2">Результат вычислений</div>
+                </div>
+            </div>
+            <div class = "tbody">
+                <%@res.each_index do |index|%>
+                  <div class = "rowt">
+                    <div class = "col1"><%=index + 1%></div>
+                    <div class = "col2"><%=@res[index]%></div>
+                  </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
+    <%if @res.length == 1000%>
+        <h3>Для числа <%=@res[0] + ' ' + 'гипотеза не подтверждена'%></h3> 
+    <%else%>
+        <h3>Для числа <%=@res[0] + ' ' + 'гипотеза подтверждена'%></h3>
+    <%end%>
+    <h4><%=link_to 'Назад', lab_input_path%></h4>
+<%end%>

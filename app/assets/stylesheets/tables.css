@@ -1,0 +1,39 @@
+.tabled{
+    display: table;
+    border-collapse: collapse;
+    width: 20%;
+}
+
+.cap{
+    display: table-caption;
+}
+.thead{
+    display: table-header-group;
+    width: 30%;
+}
+.tbody{
+    display: table-row-group;
+}
+.rowt{
+    display: table-row;
+}
+
+.col1{
+    display: table-cell;
+    border: 1px solid black;
+    width:10%;
+}
+.col2{
+    display: table-cell;
+    border: 1px solid black;
+    width:80%;
+}
+.tbody{
+    border: 1px solid #000000;
+}
+
+.col1{
+    display: table-cell;
+    border: 1px solid black;
+    width: 5%;
+}
