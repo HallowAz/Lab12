@@ -16,16 +16,18 @@
                 <%@res.each_index do |index|%>
                   <div class = "rowt">
                     <div class = "col1"><%=index + 1%></div>
-                    <div class = "col2"><%=@res[index]%></div>
+                    <div class = "col2" id="val_<%=(index + 1)%>"><%=@res[index]%></div>
                   </div>
                 <%end%>
             </div>
         </div>
     </div>
-    <%if @res.length == 1000%>
-        <h3>Для числа <%=@res[0] + ' ' + 'гипотеза не подтверждена'%></h3> 
-    <%else%>
-        <h3>Для числа <%=@res[0] + ' ' + 'гипотеза подтверждена'%></h3>
-    <%end%>
+    <div id="hip">
+        <%if @res.length == 1000%>
+            <h3>Для числа <%=@res[0] + ' ' + 'гипотеза не подтверждена'%></h3> 
+        <%else%>
+            <h3>Для числа <%=@res[0] + ' ' + 'гипотеза подтверждена'%></h3>
+        <%end%>
+    </div>
     <h4><%=link_to 'Назад', lab_input_path%></h4>
 <%end%>

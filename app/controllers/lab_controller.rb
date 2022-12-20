@@ -5,7 +5,7 @@ class LabController < ApplicationController
   include LabHelper
   before_action :check_params, only: :show
 
-  def input; end
+  def input;end
 
   def show
     @res = if params[:numb] == ''

@@ -5,4 +5,6 @@ class User < ApplicationRecord
  
     validates :password, format: { with: /[A-Za-z0-9!#$%?]/ }
     validates :login, uniqueness: true
+    
+    
 end

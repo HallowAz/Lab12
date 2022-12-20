@@ -18,10 +18,10 @@
   <br>
   <div>
     <%= form.label "Пароль", style: "display: block" %>
-    <%= form.text_field :password %>
+    <%= form.password_field :password %>
   </div>
   <br>
   <div>
-    <%= form.submit "Отправить" %>
+    <%= form.submit("Отправить", id: "reg_submit") %>
   </div>
 <% end %>

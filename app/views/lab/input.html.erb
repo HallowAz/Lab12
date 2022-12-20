@@ -4,5 +4,10 @@
 <%= form.number_field(:numb)%>
 <%= form.submit('Проверить', id: 'check_button')%>
 <% end%>
+
 <br>
+<%= link_to "Список пользователей", users_path  %>
+<br>
+<br>
+<%= link_to "Выйти", root_path  %>
 <%= flash[:notice]%>

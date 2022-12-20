@@ -1,10 +1,11 @@
+require 'digest/sha1'
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-
+ # before_action :authenticate, except: [:new, :create, :autorization]
   # GET /users or /users.json
   def index
     @users = User.all
-  end
+ end
 
   # GET /users/1 or /users/1.json
   def show
@@ -21,12 +22,14 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
-
+    @new_user_params = user_params
+    @new_user_params[:password] = Digest::SHA1.hexdigest(user_params[:password])
+    @user = User.new(@new_user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to user_url(@user), notice: "User was successfully created." }
+        format.html { redirect_to lab_input_path, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
+        session[:current_user_id] = @user.id
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -36,8 +39,11 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    @new_user_params = user_params
+    @new_user_params[:password] = Digest::SHA1.hexdigest(user_params[:password])
+    @user = User.find_by(login: user_params[:login])
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(@new_user_params)
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
